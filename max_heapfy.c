@@ -27,6 +27,8 @@ void max_heapfy(int *vec, int i, int len){
         int aux = vec[index_father];
         vec[index_father] = vec[max_child];
         vec[max_child] = aux;
+
+        print_vec("Troca: %d", vec[max_child], );
     }
 
     print_vec(vec, len);
