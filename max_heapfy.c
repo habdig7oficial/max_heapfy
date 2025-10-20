@@ -10,7 +10,13 @@ void print_vec(int *vec, int len){
     printf("]\n"); 
 }
 
-void max_heapfy(int *vec, int i, int len){
+void swap(int *a, int *b){
+    int aux = *a;
+    *a = *b;
+    *b = aux;
+}
+
+bool max_heapfy(int *vec, int i, int len){
     bool parity = (i % 2) == 0;
     int index_father = (int)i / 2 + (parity? -1 : 0);
     int index_brother = i + (parity ? -1 : 1);
@@ -20,18 +26,18 @@ void max_heapfy(int *vec, int i, int len){
     printf("\n");
 
     if(index_brother >= len){
-        return;
+        return false;
     }
     int max_child = (vec[i] >= vec[index_brother])? i : index_brother;
     if(vec[max_child] > vec[index_father]){
-        int aux = vec[index_father];
-        vec[index_father] = vec[max_child];
-        vec[max_child] = aux;
+        swap(&vec[index_father], &vec[max_child]);
 
-        print_vec("Troca: %d", vec[max_child], );
+        printf("Troca: %d %d\n", vec[max_child], vec[index_father]);
+        return true;
     }
 
     print_vec(vec, len);
+    return false;
 }
 
 int main(){
@@ -42,4 +48,19 @@ int main(){
     for(int i = len - 1; i > 0; i -= 2){
         max_heapfy(vec, i, len);
     }
+
+    printf("\n----------End max Heapfy----------\n");
+
+    print_vec(vec, len);
+
+    for(int i = len - 1; i > 0; i--){
+        swap(&vec[0], &vec[i]);
+        for(int j = 1; max_heapfy(vec, j, i); j += 2){
+            print_vec(vec, len);
+            
+        }
+    }
+
+
+    print_vec(vec, len);
 }
