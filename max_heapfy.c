@@ -24,5 +24,7 @@ int main(){
     int vec[] = {2,14,6,8,5,4,3,1,7,9,6,10,17,20,12,19};
     print_vec(vec, sizeof(vec) / sizeof(int));
 
-    
+    for(int i = sizeof(vec) / sizeof(int) - 1; i > 0; i--){
+        max_heapfy(vec, i);
+    }
 }
