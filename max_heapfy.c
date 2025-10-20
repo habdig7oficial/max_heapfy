@@ -41,7 +41,7 @@ bool max_heapfy(int *vec, int i, int len){
 }
 
 int main(){
-    int vec[] = {2,14,6,8,5,4,3,1,7,9,6,10,17,20,12,19};
+    int vec[] = {2, 14, 6, 8, 5, 4, 3, 1, 7, 9, 6, 10, 17, 20, 12, 19};
     int len = sizeof(vec) / sizeof(int);
     print_vec(vec, len);
 
@@ -57,7 +57,6 @@ int main(){
         swap(&vec[0], &vec[i]);
         for(int j = 1; max_heapfy(vec, j, i); j += 2){
             print_vec(vec, len);
-            
         }
     }
 
